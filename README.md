@@ -11,13 +11,14 @@ Der Archetyp kann erzeugt und lokal im Maven-Repo (.m2) installiert werden, und 
 
 Anschließend kann ein neues Maven-Projekt angelegt werden, und zwar mit einem Befehl wie folgendem:
 
+<code>
 >mvn archetype:generate 
      -DarchetypeGroupId=agentville.jade.maven.archetype 
      -DarchetypeArtifactId=jade-agent-archetype 
      -DarchetypeVersion=1.0-SNAPSHOT 
      -DgroupId=<groupId> 
      -DartifactId=<artifactId>
-     
+</code>     
 (Wobei sich die Versions-Nr natürlich auch mal geändert haben kann. Und die <groupId> und die <artifactId> entsprechend
 ersetzt werden müssen.)
 
