@@ -1,8 +1,6 @@
 agentville-jade-archetype
 =========================
 
-Maven-Archetype für einen JADE-Agenten
-
 Dieses Projekt erstellt einen Maven-Archetype, mit dem ein Maven-Projekt für einen JADE-Agenten angelegt werden kann.
 
 Der Archetyp kann erzeugt und lokal im Maven-Repo (.m2) installiert werden, und zwar auf der Kommandozeile mit
@@ -28,7 +26,15 @@ einen JADE-Agenten mit der Bezeichnung <code>voll_qualifizierter_Klassenname_des
 
 Der Agent selbst ist natürlich simpel und dient lediglich als leichter Einstieg.
 
-TODOs:
+Notwendige Anpassungen
+----------------------
+
+- Wenn die Klasse "MyAgent" umbenannt wird, dann muss diese Bezeichnung auch in der POM geändert werden.
+- Wenn die Klasse "AgentStarter" umbenannt wird, dann muss ebenfalls eine Stelle in der POM geändert werden.
+- Wenn die Klasse "AgentStarter" gelöscht wird, beispielsweise weil der Agent keine <code>Main</code>-Methode benötigt, wird durch die POM ein ungültiger Eintrag in der Manifest-Datei der erstellten Binaries erzeugt. Der Eintrag kann dann auch einfach entfallen.
+
+TODOs
+-----
 
 - Die Main-Methode und vllt. auch den Agenten noch etwas ausbauen.
 - Logging ergänzen
