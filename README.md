@@ -34,4 +34,4 @@ TODOs:
 - Logging ergänzen
 - Testfälle ergänzen
 - Dokumentation mit site
-- Archetype veröffentlichen (oder wenigstens als Binary zur Verfügung stellen.)
+- Archetype veröffentlichen (oder wenigstens als Binary zur Verfügung stellen.) (Vor dem veröffentlichen für eine vernünftige Domain/eine vernünftige GroupID sorgen.)
