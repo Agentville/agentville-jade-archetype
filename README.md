@@ -33,4 +33,5 @@ TODOs:
 - Die Main-Methode und vllt. auch den Agenten noch etwas ausbauen.
 - Logging ergänzen
 - Testfälle ergänzen
+- Dokumentation mit site
 - Archetype veröffentlichen (oder wenigstens als Binary zur Verfügung stellen.)
