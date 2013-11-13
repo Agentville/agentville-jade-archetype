@@ -19,12 +19,12 @@ Anschließend kann ein neues Maven-Projekt angelegt werden, und zwar mit einem B
      -DgroupId=&lt;groupId> 
      -DartifactId=&lt;artifactId>
 </code></pre>     
-(Wobei sich die Versions-Nr natürlich auch mal geändert haben kann. Und die <groupId> und die <artifactId> entsprechend
+(Wobei sich die Versions-Nr natürlich auch mal geändert haben kann. Und die &lt;groupId> und die &lt;artifactId> entsprechend
 ersetzt werden müssen.)
 
-Das mit diesem Archetype erstellte Projekt kann direkt kompiliert werden und erzeugt dann zwei JARs:
-Ein ausführbares Standard-Maven-Artefakt mit der Bezeichnung "<artifactId>-<version>.jar sowie
-einen JADE-Agenten mit der Bezeichnung "voll_qualifizierter_Klassenname_des_Agenten.jar".
+Das mit diesem Archetype erstellte Projekt kann in Eclipse (o.ä.) importiert und auch direkt kompiliert werden. Es erzeugt dann zwei JARs:
+Ein ausführbares Standard-Maven-Artefakt mit der Bezeichnung <code>&lt;artifactId>-&lt;version>.jar</code> sowie
+einen JADE-Agenten mit der Bezeichnung <code>voll_qualifizierter_Klassenname_des_Agenten.jar</code>. Inhaltlich sind beide Agenten identisch.
 
 Der Agent selbst ist natürlich simpel und dient lediglich als leichter Einstieg.
 
@@ -33,3 +33,4 @@ TODOs:
 - Die Main-Methode und vllt. auch den Agenten noch etwas ausbauen.
 - Logging ergänzen
 - Testfälle ergänzen
+- Archetype veröffentlichen
