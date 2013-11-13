@@ -6,19 +6,19 @@ Maven-Archetype für einen JADE-Agenten
 Dieses Projekt erstellt einen Maven-Archetype, mit dem ein Maven-Projekt für einen JADE-Agenten angelegt werden kann.
 
 Der Archetyp kann erzeugt und lokal im Maven-Repo (.m2) installiert werden, und zwar auf der Kommandozeile mit
-
+<pre><code>
 >mvn clean install archetype:update-local-catalog
-
+</code></pre> 
 Anschließend kann ein neues Maven-Projekt angelegt werden, und zwar mit einem Befehl wie folgendem:
 
-<code>
+<pre><code>
 >mvn archetype:generate 
      -DarchetypeGroupId=agentville.jade.maven.archetype 
      -DarchetypeArtifactId=jade-agent-archetype 
      -DarchetypeVersion=1.0-SNAPSHOT 
-     -DgroupId=<groupId> 
-     -DartifactId=<artifactId>
-</code>     
+     -DgroupId=&lt;groupId> 
+     -DartifactId=&lt;artifactId>
+</code></pre>     
 (Wobei sich die Versions-Nr natürlich auch mal geändert haben kann. Und die <groupId> und die <artifactId> entsprechend
 ersetzt werden müssen.)
 
