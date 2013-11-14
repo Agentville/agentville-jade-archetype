@@ -38,7 +38,7 @@ TODOs
 -----
 
 - Die Main-Methode und vllt. auch den Agenten noch etwas ausbauen.
-- Logging ergänzen
-- Testfälle ergänzen
-- Dokumentation mit site
+- Logging ergänzen (Java logging, JADE logging)
+- Testfälle ergänzen (JADE TestSuite, junit?)
+- API-Docs und Reports (javadoc, site)
 - Archetype veröffentlichen (oder wenigstens als Binary zur Verfügung stellen.) (Vor dem veröffentlichen für eine vernünftige Domain/eine vernünftige GroupID sorgen.)
