@@ -32,7 +32,7 @@ Notwendige Anpassungen
 - Wenn die Klasse "MyAgent" umbenannt wird, dann muss diese Bezeichnung auch in der POM geändert werden.
 - Wenn die Klasse "MyAgent" umbenannt wird, dann muss außerdem die Referenz in der Klasse "AgentStarter" geändert werden - außer die Umbenennung der Klasse erfolgte mit der Rename-Funktion der IDE. Die macht das automatisch.
 - Wenn die Klasse "AgentStarter" umbenannt wird, dann muss ebenfalls eine Referenz in der POM geändert werden.
-- Wenn die Klasse "AgentStarter" gelöscht wird, beispielsweise weil der Agent keine <code>Main</code>-Methode benötigt, wird durch die POM ein ungültiger Eintrag in der Manifest-Datei der erstellten Binaries erzeugt. Der Eintrag kann dann auch einfach entfallen.
+- Wenn die Klasse "AgentStarter" gelöscht wird, beispielsweise weil der Agent keine <code>Main</code>-Methode benötigt, wird durch die POM ein ungültiger Eintrag in der Manifest-Datei der erstellten Binaries erzeugt. Der Eintrag kann dann auch einfach entfallen, also folgende Zeile löschen: <pre><code>&lt;mainClass>${project.groupId}.AgentStarter&lt;/mainClass></code></pre>
 
 TODOs
 -----
