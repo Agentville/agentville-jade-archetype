@@ -43,3 +43,9 @@ TODOs
 - Testfälle ergänzen (JADE TestSuite, junit?)
 - API-Docs und Reports (javadoc, site)
 - Archetype veröffentlichen (oder wenigstens als Binary zur Verfügung stellen.) (Vor dem veröffentlichen für eine vernünftige Domain/eine vernünftige GroupID sorgen.)
+ 
+Nice to haves
+-------------
+
+Uns allen ist klar, dass ich folgendes vermutlich nie machen werde - auch wenn ich es gern würde:
+- _vernünftiges_ Logging mit log4j o.ä. Da gibts auch was für, heißt log4jade, funzt aber net unter bspswse Android afaik.
