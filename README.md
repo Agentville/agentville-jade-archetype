@@ -49,3 +49,45 @@ Nice to haves
 
 Uns allen ist klar, dass ich folgendes vermutlich nie machen werde - auch wenn ich es gern würde:
 - _vernünftiges_ Logging mit log4j o.ä. Da gibts auch was für, heißt log4jade, funzt aber net unter bspswse Android afaik.
+- Aufteilung auf verschiedene Archetypen:
+
+<table border="1">
+  <tr>
+    <th></th>
+    <th>rare</th>
+    <th>medium</th>
+    <th>well done</th>
+  </tr>
+  <tr>
+    <td>Grundstruktur</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Java-Docs (API)</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Logging</td>
+    <td></td>
+    <td>X</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Testing</td>
+    <td></td>
+    <td></td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Reports</td>
+    <td></td>
+    <td></td>
+    <td>X</td>
+  </tr>
+</table>
+
+
