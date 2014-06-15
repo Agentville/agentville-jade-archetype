@@ -142,7 +142,34 @@
 <!--         </configuration> -->
 <!--       </plugin> -->
       
-      
+        <plugin>
+          <!-- Erzeugt die Javadocs und ein entsprechendes JAR.
+          Ausführen mit "mvn javadoc:jar"
+          Für dieses Plugin muss Eclipse mit dem JDK konfiguriert
+          sein, das dem SDK beiliegt!!! -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.9.1</version>
+          <configuration>
+            <!-- ... -->
+          </configuration>
+        </plugin>
+        <plugin>
+          <!-- Erzeugt ein JAR mit den Sourcen.
+          Ausführen mit "mvn source:jar" -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.2.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>      
     </plugins>
   </build>
 </project>
