@@ -1,4 +1,4 @@
-package ${groupId};
+package ${groupId}.${artifactId};
 
 import java.util.logging.LogManager;
 
@@ -14,8 +14,8 @@ import jade.wrapper.StaleProxyException;
 /**
  * Die Implementierung der Main-Methode erzeugt einen lokalen 
  * JADE-Main-Container mit RMA. Die damit erzeugte Plattform  
- * ist die Testumgegung für die Entwicklung des Agenten und er-
- * möglicht so eine kontrollierte Umgebung. Eine "produktive"
+ * ist die Testumgegung fÃ¼r die Entwicklung des Agenten und er-
+ * mÃ¶glicht so eine kontrollierte Umgebung. Eine "produktive"
  * Umgebung wird dadurch aber nicht erzeugt.
  * 
  * @author Marco Steffens
@@ -23,18 +23,14 @@ import jade.wrapper.StaleProxyException;
  */
 public class AgentStarter {
 	
-	Agent remoteManagementAgent = null;
-
 	public static void main(String[] args){
 	
-		String host;
-		int port;
-		String platform = null;		//default name
-		boolean main = true;
+		String host 	= "localhost";
+		int port 		= -1; 			//default port 1099
+		String platform = null; 		//default name
+		boolean main 	= true; 		//erzeugt wird ein main-Container
 	
-		host = "localhost";
-		port = -1;			//default-port 1099
-	
+		//die projekteigene Konfiguration fÃ¼r das Logging laden
 		configureLogging();
 
 		Runtime runtime = Runtime.instance();
@@ -47,20 +43,18 @@ public class AgentStarter {
 		//Container erzeugen
 		container = runtime.createMainContainer(profile);
 
-		remoteManagementAgent = new jade.tools.rma.rma();
-		// Remote Monitoring Agenten erzeugen
-		try {
-			AgentController rma = container.acceptNewAgent(
-	                	"RMA",
-	                	remoteManagementAgent
-	                    );
-			rma.start();
-		} catch(StaleProxyException e) {
-			throw new RuntimeException(e);
-		}
-	
+		//GUI wollen wir auch
+		startingRemoteMonitoringAgent(container);
 
-		// Agenten erzeugen und startet - oder aussteigen.
+		// Agenten erzeugen und startet.
+		startingThisAgent(args, container);
+	}
+
+	/*
+	 * Startet den eigentlichen Agenten, also DIESEN Agenten.
+	 */
+	private static void startingThisAgent(String[] args, AgentContainer container) {
+
 		try {
 			AgentController agent = container.createNewAgent(
 	                	"MyAgent",
@@ -73,19 +67,35 @@ public class AgentStarter {
 	}
 
 	/*
+	 * Der RMA stellt das JADE-GUI zur VerfÃ¼gung.
+	 */
+	private static void startingRemoteMonitoringAgent(AgentContainer container) {
+		
+		Agent remoteManagementAgent = new jade.tools.rma.rma();
+		
+		try {
+			AgentController rma = container.acceptNewAgent(
+	                	"RMA",
+	                	remoteManagementAgent);
+			rma.start(); }
+		catch(StaleProxyException e) {
+			throw new RuntimeException(e); }
+	}
+
+	/*
 	 * Das Logging-System von JADE basiert auf java.util.logging, und im
 	 * Zusammenhang mit Maven bringt das ein paar Probleme mit sich. Einmal
 	 * weil Java die Konfigurationsdatei per default im Installationsverzeichnis
 	 * des SDK sucht. Und dann noch weil der Logging-Agent von JADE nur ganz
 	 * am Anfang die Konfiguration einliest und sich nicht mehr umkonfigurieren
-	 * lässt. Das bedeutet: 
+	 * lÃ¤sst. Das bedeutet: 
 	 * Da wir in einem Maven-Projekt alle relevanten Konfigurationsdateien im 
-	 * Projektverzeichnis ablegen wollen, müssen wir den Pfad dahin noch irgendwie
-	 * innerhalb unserer VM bekannt machen. Einer der üblichen Wege ist die Übergabe
+	 * Projektverzeichnis ablegen wollen, mÃ¼ssen wir den Pfad dahin noch irgendwie
+	 * innerhalb unserer VM bekannt machen. Einer der Ã¼blichen Wege ist die Ãœbergabe
 	 * als VM-Parameter beim Start, aber da wir unsere Agenten auf verschiedene Arten
 	 * starten wollen, bietet sich das nicht an. Da andererseites der Logging-Agent
 	 * die Konfiguration aber nur beim Start einliest, muss die Konfiguration VOR dem
-	 * Erzeugen der Plattform stattfinden. Und das ist genau hier. Das heißt aber auch,
+	 * Erzeugen der Plattform stattfinden. Und das ist genau hier. Das heiÃŸt aber auch,
 	 * dass bei allen Startarten, die die Main-Methode umgehen, die jeweils lokal
 	 * vorhandene Konfigurationsdatei verwendet wird.
 	 */
@@ -95,8 +105,7 @@ public class AgentStarter {
 							"src/main/resources/logging.properties" );
 
 		try {
-			LogManager.getLogManager().readConfiguration();
-			}
+			LogManager.getLogManager().readConfiguration(); }
 		catch ( Exception e ) { 
 			e.printStackTrace(); }
 	}
