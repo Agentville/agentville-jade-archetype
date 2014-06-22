@@ -9,6 +9,7 @@ import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
+import java.io.IOException;
 
 
 /**
@@ -30,13 +31,13 @@ public class AgentStarter {
         String platform  = null;           //default name
         boolean main     = true;           //erzeugt wird ein main-Container
     
-        //die projekteigene Konfiguration für das Logging laden
+        //die projekteigene Konfiguration fÃ¼r das Logging laden
         configureLogging();
 
         Runtime runtime = Runtime.instance();
     
-        Profile profile = null;
-        AgentContainer container = null;
+        Profile profile;
+        AgentContainer container;
     
         profile = new ProfileImpl(host, port, platform, main);
     
@@ -67,7 +68,7 @@ public class AgentStarter {
     }
 
     /*
-     * Der RMA stellt das JADE-GUI zur Verfügung.
+     * Der RMA stellt das JADE-GUI zur VerfÃ¼gung.
      */
     private static void startingRemoteMonitoringAgent(AgentContainer container) {
         
@@ -99,6 +100,7 @@ public class AgentStarter {
      * dass bei allen Startarten, die die Main-Methode umgehen, die jeweils lokal
      * vorhandene Konfigurationsdatei verwendet wird.
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     private static void configureLogging() {
 
         System.setProperty( "java.util.logging.config.file",
@@ -106,7 +108,8 @@ public class AgentStarter {
 
         try {
             LogManager.getLogManager().readConfiguration(); }
-        catch ( Exception e ) { 
-            e.printStackTrace(); }
+        catch ( IOException | SecurityException e) {
+            e.printStackTrace();
+        }
     }
 }
