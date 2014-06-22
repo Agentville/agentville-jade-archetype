@@ -11,44 +11,45 @@ import jade.util.Logger;
  *
  */
 public class MyAgent extends Agent {
-	
-	private static final long serialVersionUID = 1L;
+    
+    private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = jade.util.Logger.getMyLogger(
-			MyAgent.class.getName());	
-	
-	/*
-	 * (non-Javadoc)
-	 * @see jade.core.Agent#setup()
-	 */
-	protected void setup() {
-		
-		if (logger.isLoggable(jade.util.Logger.WARNING))
-			logger.log(jade.util.Logger.WARNING, 
-					"Hello Eclipse! This is " + getLocalName());
-	    	
+    private static final Logger logger = jade.util.Logger.getMyLogger(
+            MyAgent.class.getName());    
+    
+    /*
+     * (non-Javadoc)
+     * @see jade.core.Agent#setup()
+     */
+    @Override
+    protected void setup() {
+        
+        if (logger.isLoggable(jade.util.Logger.WARNING))
+            logger.log(jade.util.Logger.WARNING, 
+                    "Hello Eclipse! This is {0}", getLocalName());
+            
         System.out.println("Hello Eclipse! This is "
                 + getLocalName());
         
-		//Der/die/das Behaviour wird ausgeführt, sobald hier die
+        //Der/die/das Behaviour wird ausgeführt, sobald hier die
         //setup()-Methode abgearbeitet wird. Also danach läuft
         //wohl der Scheduler an und führt den ersten Behaviour aus?
         KeepAliveBehaviour kab = new KeepAliveBehaviour(this);
-		this.addBehaviour(kab);
-        
+        this.addBehaviour(kab);
     }
-	
-	/*
-	 * Die takeDown-Methode wird automatisch ausgeführt, wenn der Agent 
-	 * per "doDelete()" gelöscht wird. Hier wäre also der richtige Ort
-	 * fuer Aufraeumarbeiten.
-	 * 
-	 * @see jade.core.Agent#takeDown()
-	 */
-	protected void takeDown() {
-		if (logger.isLoggable(jade.util.Logger.WARNING))
-			logger.log(jade.util.Logger.WARNING, "takeDown");
-		
-		//aufräumen
-	}
+    
+    /*
+     * Die takeDown-Methode wird automatisch ausgeführt, wenn der Agent 
+     * per "doDelete()" gelöscht wird. Hier wäre also der richtige Ort
+     * fuer Aufraeumarbeiten.
+     * 
+     * @see jade.core.Agent#takeDown()
+     */
+    @Override
+    protected void takeDown() {
+        if (logger.isLoggable(jade.util.Logger.WARNING))
+            logger.log(jade.util.Logger.WARNING, "takeDown");
+        
+        //aufräumen
+    }
 }
